@@ -17,3 +17,18 @@ exports.isAuthenticatedUser = wrapAsync(async (req, res, next) => {
 
   next();
 });
+
+exports.authorizeRoles = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new ExpressError(
+          403,
+          `Role: ${req.user.role} is not allowed to access this resouce`
+        )
+      );
+    }
+
+    next();
+  };
+};
