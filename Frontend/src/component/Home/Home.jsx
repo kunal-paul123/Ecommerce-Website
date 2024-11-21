@@ -17,11 +17,11 @@ function Home() {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
-      // dispatch(clearErrors());
+      alert.error(error);
+      dispatch(clearErrors());
     }
     dispatch(getProducts());
-  }, [dispatch, error]);
+  }, [dispatch, error, alert]);
 
   return (
     <>

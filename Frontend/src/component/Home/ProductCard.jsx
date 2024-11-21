@@ -12,7 +12,7 @@ function ProductCard(product) {
   };
 
   return (
-    <NavLink className="productCard" to={product._id}>
+    <NavLink className="productCard" to={`/product/${product._id}`}>
       <img src={product.images[0].url} alt={product.name} />
       <p>{product.name}</p>
       <div>
