@@ -29,6 +29,7 @@ exports.getAllProducts = wrapAsync(async (req, res, next) => {
     success: true,
     products,
     productsCount,
+    resultPerPage,
   });
 });
 
