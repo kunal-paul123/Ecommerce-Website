@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./search.css";
 import { useNavigate } from "react-router-dom";
+import MetaData from "../layout/MetaData";
 
 function Search() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function Search() {
 
   return (
     <>
+      <MetaData title="Search A Product" />
       <form action="" className="searchBox" onSubmit={handleSubmit}>
         <input
           type="text"

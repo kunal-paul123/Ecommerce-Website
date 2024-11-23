@@ -65,3 +65,49 @@
 .pageLinkActive {
   color: white;
 }
+
+.filterBox {
+  width: 10vmax;
+  position: absolute;
+  top: 10vmax;
+  left: 3vmax;
+}
+
+.categoryBox {
+  padding: 0%;
+}
+
+.category-link {
+  list-style: none;
+  color: rgba(0, 0, 0, 0.61);
+  font: 400 0.9vmax "Roboto";
+  margin: 0.4vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.category-link:hover {
+  color: tomato;
+}
+
+.filterBox > fieldset {
+  padding: 3px 10px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.371);
+}
+
+@media screen and (max-width: 600px) {
+  .filterBox {
+    width: 20vmax;
+    position: static;
+    margin: auto;
+  }
+
+  .page-link {
+    font: 300 1.6vmax "Roboto";
+  }
+
+  .category-link {
+    font: 500 2vmax "Roboto";
+  }
+}
