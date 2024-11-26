@@ -13,10 +13,6 @@ exports.register = wrapAsync(async (req, res, next) => {
     name,
     email,
     password,
-    avatar: {
-      public_id: "this is a sample id",
-      url: "profilepicurl",
-    },
   });
 
   sendToken(user, 201, res);
@@ -37,7 +33,7 @@ exports.login = wrapAsync(async (req, res, next) => {
     return next(new ExpressError(401, "Invaild email or password"));
   }
 
-  const isPasswordMatched = user.comparePassword(password);
+  const isPasswordMatched = await user.comparePassword(password);
 
   if (!isPasswordMatched) {
     return next(new ExpressError(401, "Invaild email or password"));

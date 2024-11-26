@@ -14,6 +14,7 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 
 //Route Imports
 const product = require("./routes/productRoute");
