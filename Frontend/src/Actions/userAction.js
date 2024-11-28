@@ -1,6 +1,9 @@
 import axios from "axios";
 import {
   CLEAR_ERRORS,
+  FORGOT_PASSWORD_FAIL,
+  FORGOT_PASSWORD_REQUESTS,
+  FORGOT_PASSWORD_SUCCESS,
   LOAD_USER_FAIL,
   LOAD_USER_REQUESTS,
   LOAD_USER_SUCCESS,
@@ -12,6 +15,12 @@ import {
   REGISTER_USER_FAIL,
   REGISTER_USER_REQUESTS,
   REGISTER_USER_SUCCESS,
+  RESET_PASSWORD_FAIL,
+  RESET_PASSWORD_REQUESTS,
+  RESET_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_REQUESTS,
+  UPDATE_PASSWORD_SUCCESS,
   UPDATE_PROFILE_FAIL,
   UPDATE_PROFILE_REQUESTS,
   UPDATE_PROFILE_SUCCESS,
@@ -99,7 +108,69 @@ export const updateProfile = (userData) => async (dispatch) => {
   }
 };
 
+//update password
+export const updatePassword = (passwords) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PASSWORD_REQUESTS });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      "/api/v1/password/update",
+      passwords,
+      config
+    );
+
+    dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+//forgot password
+export const forgotPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: FORGOT_PASSWORD_REQUESTS });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.post("/api/v1/password/forgot", email, config);
+
+    dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: FORGOT_PASSWORD_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+//reset password
+export const resetPassword = (token, passwords) => async (dispatch) => {
+  try {
+    dispatch({ type: RESET_PASSWORD_REQUESTS });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      `/api/v1/password/reset/${token}`,
+      passwords,
+      config
+    );
+
+    dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: RESET_PASSWORD_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
 //clearing errors
-export const clearErrors = () => async (dispatch) => {
+export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };
