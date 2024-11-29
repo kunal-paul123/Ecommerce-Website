@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./loginSignup.css";
 import { useEffect, useRef, useState } from "react";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -17,6 +17,8 @@ function LoginSignup() {
 
   const dispatch = useDispatch();
   const alert = useAlert();
+
+  const location = useLocation();
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);
@@ -56,15 +58,19 @@ function LoginSignup() {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const searchParams = new URLSearchParams(location.search);
+  const redirect = searchParams.get("redirect") || "/account";
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate("/account");
+      const redirectPath = redirect.startsWith("/") ? redirect : `/${redirect}`;
+      navigate(redirectPath);
     }
-  }, [dispatch, error, alert, isAuthenticated]);
+  }, [dispatch, error, alert, isAuthenticated, redirect, navigate]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

@@ -5,11 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../Actions/cartAction";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import MetaData from "../layout/MetaData";
 
 function Cart() {
   const { cartItems } = useSelector((state) => state.cart);
+
+  const { isAuthenticated } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -33,6 +39,14 @@ function Cart() {
     dispatch(removeItemsFromCart(id));
   };
 
+  const checkOutHandler = () => {
+    if (isAuthenticated) {
+      navigate("/shipping");
+    } else {
+      navigate("/login?redirect=shipping");
+    }
+  };
+
   return (
     <>
       {cartItems.length == 0 ? (
@@ -44,6 +58,7 @@ function Cart() {
         </div>
       ) : (
         <>
+          <MetaData title="Cart" />
           <div className="cartPage">
             <div className="cartHeader">
               <p>Product</p>
@@ -98,7 +113,7 @@ function Cart() {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button>Check Out</button>
+                <button onClick={() => checkOutHandler()}>Check Out</button>
               </div>
             </div>
           </div>
