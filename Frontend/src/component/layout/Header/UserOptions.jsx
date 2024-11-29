@@ -6,6 +6,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppSharpIcon from "@mui/icons-material/ExitToAppSharp";
 import ListAltSharpIcon from "@mui/icons-material/ListAltSharp";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Profile from "../../../images/Profile.png";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,8 @@ import { useAlert } from "react-alert";
 import { logout } from "../../../Actions/userAction";
 
 function UserOptions() {
+  const { cartItems } = useSelector((state) => state.cart);
+
   const { user } = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +26,15 @@ function UserOptions() {
   const actions = [
     { icon: <PersonIcon />, name: "Profile", func: account },
     { icon: <ListAltSharpIcon />, name: "Order", func: orders },
+    {
+      icon: (
+        <ShoppingCartIcon
+          style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
+        />
+      ),
+      name: `Cart(${cartItems.length})`,
+      func: cart,
+    },
     { icon: <ExitToAppSharpIcon />, name: "Logout", func: logoutUser },
   ];
 
@@ -42,6 +54,9 @@ function UserOptions() {
   }
   function orders() {
     navigate("/orders");
+  }
+  function cart() {
+    navigate("/cart");
   }
   function logoutUser() {
     dispatch(logout());
@@ -69,6 +84,7 @@ function UserOptions() {
               icon={action.icon}
               tooltipTitle={action.name}
               onClick={action.func}
+              tooltipOpen={window.innerWidth <= 600 ? true : false}
             />
           );
         })}
