@@ -35,18 +35,18 @@ exports.newOrder = wrapAsync(async (req, res, next) => {
 
 //get single order
 exports.getSingleOrder = wrapAsync(async (req, res, next) => {
-  const orders = await Order.findById(req.params.id).populate(
+  const order = await Order.findById(req.params.id).populate(
     "user",
     "name email"
   );
 
-  if (!orders) {
+  if (!order) {
     return next(new ExpressError(404, "Order not found"));
   }
 
   res.status(200).json({
     success: true,
-    orders,
+    order,
   });
 });
 

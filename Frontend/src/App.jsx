@@ -21,6 +21,11 @@ import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";
+import PaymentPage from "./component/Cart/PaymentPage";
+import OrderSuccess from "./component/Cart/OrderSuccess";
+import MyOrders from "./component/Order/MyOrders";
+import OrderDetails from "./component/Order/OrderDetails";
+import Dashboard from "./component/Admin/Dashboard";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -48,7 +53,14 @@ function App() {
 
         <Route path="/cart" element={<Cart />} />
 
-        <Route element={<ProtectedRoute redirectTo="/login" />}>
+        <Route
+          element={
+            <ProtectedRoute
+              redirectTo="/login"
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        >
           <Route path="/account" element={<Profile />} />
 
           <Route path="/me/update" element={<UpdateProfile />} />
@@ -58,6 +70,16 @@ function App() {
           <Route path="/shipping" element={<Shipping />}></Route>
 
           <Route path="/order/confirm" element={<ConfirmOrder />} />
+
+          <Route path="/process/payment" element={<PaymentPage />} />
+
+          <Route path="/paymentsuccess" element={<OrderSuccess />} />
+
+          <Route path="/orders" element={<MyOrders />} />
+
+          <Route path="/order/:id" element={<OrderDetails />} />
+
+          <Route path="/admin/dashboard" element={<Dashboard />} />
         </Route>
 
         <Route path="/password/forgot" element={<ForgotPassword />} />

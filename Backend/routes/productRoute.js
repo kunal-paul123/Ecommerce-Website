@@ -26,7 +26,7 @@ router
 
 router.route("/product/:id").get(getProductDetails);
 
-router.route("/review").post(isAuthenticatedUser, createProductReview);
+router.route("/review").put(isAuthenticatedUser, createProductReview);
 
 router
   .route("/reviews")

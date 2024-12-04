@@ -135,22 +135,22 @@
     border-top: 1px solid rgba(0, 0, 0, 0.247);
   }
 
-  .confirmshippingArea > p {
+  .confirmShippingArea > p {
     font: 400 6vw "Roboto";
   }
 
-  .confirmshippingAreaBox > div {
+  .confirmShippingAreaBox > div {
     display: flex;
     margin: 6vw 0;
   }
 
-  .confirmshippingAreaBox > div > p {
+  .confirmShippingAreaBox > div > p {
     font: 400 4vw "Roboto";
   }
-  .confirmshippingAreaBox > div > span {
+  .confirmShippingAreaBox > div > span {
     font: 100 4vw "Roboto";
   }
-
+  
   .confirmCartItems > p {
     font: 400 6vw "Roboto";
   }

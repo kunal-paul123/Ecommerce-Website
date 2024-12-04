@@ -4,11 +4,13 @@ import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import CheckoutSteps from "./CheckoutSteps";
 import { Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function ConfirmOrder() {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
+
+  const navigate = useNavigate();
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -21,7 +23,20 @@ function ConfirmOrder() {
 
   const totalPrice = subtotal + shippingCharges + tax;
 
-  const address = `${shippingInfo.address},${shippingInfo.city},${shippingInfo.state},${shippingInfo.pincode},${shippingInfo.country}`;
+  const address = `${shippingInfo.address},${shippingInfo.city}, ${shippingInfo.state},${shippingInfo.pincode},${shippingInfo.country}`;
+
+  const proceedToPayment = () => {
+    const data = {
+      subtotal,
+      shippingCharges,
+      tax,
+      totalPrice,
+    };
+
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+
+    navigate("/process/payment");
+  };
 
   return (
     <>
@@ -93,7 +108,9 @@ function ConfirmOrder() {
               <span>₹{totalPrice}</span>
             </div>
 
-            <button>Proceed To Payment</button>
+            <button onClick={() => proceedToPayment()}>
+              Proceed To Payment
+            </button>
           </div>
         </div>
       </div>

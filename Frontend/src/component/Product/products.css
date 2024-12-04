@@ -97,6 +97,15 @@
 }
 
 @media screen and (max-width: 600px) {
+  .productsHeading {
+    font: 500 2.5vmax "Roboto";
+    width: 17vw;
+  }
+
+  .productCard > p {
+    font-size: 1.9vmax;
+  }
+
   .filterBox {
     width: 20vmax;
     position: static;

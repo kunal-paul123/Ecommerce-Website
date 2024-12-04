@@ -1,14 +1,12 @@
 import { NavLink } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
+import Rating from "@mui/material/Rating";
 
 function ProductCard(product) {
   const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
+    size: "medium",
     value: product.ratings,
-    isHalf: true,
+    precision:0.5,
+    readOnly: true,
   };
 
   return (
@@ -16,7 +14,7 @@ function ProductCard(product) {
       <img src={product.images[0].url} alt={product.name} />
       <p>{product.name}</p>
       <div>
-        <ReactStars {...options} />
+        <Rating {...options} />
         <span>({product.numOfReviews})</span>
       </div>
       <span>{`₹${product.price}`}</span>
