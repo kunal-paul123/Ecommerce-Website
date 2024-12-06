@@ -26,6 +26,7 @@ import OrderSuccess from "./component/Cart/OrderSuccess";
 import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from "./component/Admin/Dashboard";
+import ProductList from "./component/Admin/ProductList";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -78,13 +79,25 @@ function App() {
           <Route path="/orders" element={<MyOrders />} />
 
           <Route path="/order/:id" element={<OrderDetails />} />
-
-          <Route path="/admin/dashboard" element={<Dashboard />} />
         </Route>
 
         <Route path="/password/forgot" element={<ForgotPassword />} />
 
         <Route path="/password/reset/:token" element={<ResetPassword />} />
+
+        <Route
+          element={
+            <ProtectedRoute
+              isAdmin={true}
+              redirectTo="/login"
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        >
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+
+          <Route path="/admin/products" element={<ProductList />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
