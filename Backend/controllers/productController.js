@@ -33,6 +33,16 @@ exports.getAllProducts = wrapAsync(async (req, res, next) => {
   });
 });
 
+//get all products(Admin)
+exports.getAdminProducts = wrapAsync(async (req, res, next) => {
+  const products = await Product.find();
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
 // get product details
 exports.getProductDetails = wrapAsync(async (req, res, next) => {
   let product = await Product.findById(req.params.id);

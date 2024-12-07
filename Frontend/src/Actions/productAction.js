@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  ADMIN_PRODUCT_FAIL,
+  ADMIN_PRODUCT_REQUESTS,
+  ADMIN_PRODUCT_SUCCESS,
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUESTS,
   ALL_PRODUCT_SUCCESS,
@@ -40,6 +43,19 @@ export const getProducts =
       });
     }
   };
+
+//get All products for admin
+export const getAdminProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_PRODUCT_REQUESTS });
+
+    const { data } = await axios.get("/api/v1/admin/products");
+
+    dispatch({ type: ADMIN_PRODUCT_SUCCESS, payload: data.products });
+  } catch (error) {
+    dispatch({ type: ADMIN_PRODUCT_FAIL, payload: error.response.data.error });
+  }
+};
 
 // get product details
 export const getProductDetails = (id) => async (dispatch) => {

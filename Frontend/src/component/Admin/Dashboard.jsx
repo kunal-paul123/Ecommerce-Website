@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "./dashboard.css";
 import { Typography } from "@mui/material";
@@ -14,6 +14,8 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
+import { useDispatch, useSelector } from "react-redux";
+import { getAdminProducts } from "../../Actions/productAction";
 
 ChartJS.register(
   ArcElement,
@@ -26,6 +28,25 @@ ChartJS.register(
 );
 
 function Dashboard() {
+  const { products } = useSelector((state) => state.products);
+
+  const dispatch = useDispatch();
+
+  console.log(products);
+
+  let outOfStock = 0;
+
+  products &&
+    products.forEach((item) => {
+      if (item.stock === 0) {
+        outOfStock += 1;
+      }
+    });
+
+  useEffect(() => {
+    dispatch(getAdminProducts());
+  }, [dispatch]);
+
   const lineState = {
     labels: ["Initial Amount", "Amount Earned"],
     datasets: [
@@ -44,7 +65,7 @@ function Dashboard() {
       {
         backgroundColor: ["#00A684", "#680084"],
         hoverBackgroundColor: ["#485000", "#35014F"],
-        data: [2, 10],
+        data: [outOfStock, products.length - outOfStock],
       },
     ],
   };
@@ -65,7 +86,7 @@ function Dashboard() {
           <div className="dashboardSummaryBox2">
             <NavLink to="/admin/products">
               <p>Product</p>
-              <p>50</p>
+              <p>{products && products.length}</p>
             </NavLink>
             <NavLink to="/admin/orders">
               <p>Orders</p>
