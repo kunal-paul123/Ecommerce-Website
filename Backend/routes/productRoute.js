@@ -12,6 +12,7 @@ const {
 } = require("../controllers/productController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 const router = express.Router();
+const upload = require("../config/multer");
 
 router.route("/products").get(getAllProducts);
 
@@ -21,7 +22,12 @@ router
 
 router
   .route("/admin/product/new")
-  .post(isAuthenticatedUser, authorizeRoles("admin"), createProduct);
+  .post(
+    isAuthenticatedUser,
+    authorizeRoles("admin"),
+    upload.array("images", 5),
+    createProduct
+  );
 
 router
   .route("/admin/product/:id")

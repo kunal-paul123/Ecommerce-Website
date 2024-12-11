@@ -5,7 +5,7 @@ function ProductCard(product) {
   const options = {
     size: "medium",
     value: product.ratings,
-    precision:0.5,
+    precision: 0.5,
     readOnly: true,
   };
 

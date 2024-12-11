@@ -14,11 +14,11 @@ const options = {
 };
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <AlertProvider template={AlertTemplate} {...options}>
-      <StrictMode>
+  <StrictMode>
+    <Provider store={store}>
+      <AlertProvider template={AlertTemplate} {...options}>
         <App />
-      </StrictMode>
-    </AlertProvider>
-  </Provider>
+      </AlertProvider>
+    </Provider>
+  </StrictMode>
 );
