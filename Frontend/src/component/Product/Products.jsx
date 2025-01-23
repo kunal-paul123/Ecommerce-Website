@@ -27,7 +27,7 @@ function Products() {
   const { loading, error, products, productsCount, resultPerPage } =
     useSelector((state) => state.products);
 
-  console.log(products);
+  // console.log(products);
 
   const alert = useAlert();
 

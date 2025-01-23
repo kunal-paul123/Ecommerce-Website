@@ -9,9 +9,13 @@ function ProductCard(product) {
     readOnly: true,
   };
 
+  // console.log(product);
+
   return (
     <NavLink className="productCard" to={`/product/${product._id}`}>
-      <img src={product.images[0].url} alt={product.name} />
+      {product.images?.length > 0 && (
+        <img src={product.images[0].url} alt={product.name} />
+      )}
       <p>{product.name}</p>
       <div>
         <Rating {...options} />

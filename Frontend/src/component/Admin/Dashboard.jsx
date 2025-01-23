@@ -29,10 +29,9 @@ ChartJS.register(
 
 function Dashboard() {
   const { products } = useSelector((state) => state.products);
+  const { orders } = useSelector((state) => state.allOrders);
 
   const dispatch = useDispatch();
-
-  console.log(products);
 
   let outOfStock = 0;
 
@@ -90,7 +89,7 @@ function Dashboard() {
             </NavLink>
             <NavLink to="/admin/orders">
               <p>Orders</p>
-              <p>4</p>
+              <p>{orders && orders.length}</p>
             </NavLink>
             <NavLink to="/admin/users">
               <p>Users</p>

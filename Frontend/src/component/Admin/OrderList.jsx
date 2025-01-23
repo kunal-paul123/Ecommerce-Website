@@ -10,18 +10,16 @@ import Sidebar from "./Sidebar";
 import { DataGrid } from "@mui/x-data-grid";
 import {
   clearErrors,
-  deleteProduct,
-  getAdminProducts,
-} from "../../Actions/productAction";
+  getAllOrders,
+  deleteOrder,
+} from "../../Actions/orderAction";
 import "./productList.css";
-import { DELETE_PRODUCT_RESET } from "../../Constants/productConstants";
+import { DELETE_ORDER_RESET } from "../../Constants/orderConstants";
 
-function ProductList() {
-  const { error, products } = useSelector((state) => state.products);
+function OrderList() {
+  const { error, orders } = useSelector((state) => state.allOrders);
 
-  const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.deleteAndUpdateProduct
-  );
+  const { error: deleteError, isDeleted } = useSelector((state) => state.order);
 
   const dispatch = useDispatch();
 
@@ -29,8 +27,8 @@ function ProductList() {
 
   const alert = useAlert();
 
-  const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));
+  const deleteOrderHandler = (id) => {
+    dispatch(deleteOrder(id));
   };
 
   useEffect(() => {
@@ -45,37 +43,35 @@ function ProductList() {
     }
 
     if (isDeleted) {
-      alert.success("Product Delete Successfully");
-      navigate("/admin/dashboard");
-      dispatch({ type: DELETE_PRODUCT_RESET });
+      alert.success("Order Deleted Successfully");
+      navigate("/admin/orders");
+      dispatch({ type: DELETE_ORDER_RESET });
     }
 
-    dispatch(getAdminProducts());
+    dispatch(getAllOrders());
   }, [dispatch, alert, error, deleteError, isDeleted]);
 
   const columns = [
+    { field: "id", headerName: "Order Id", minWidth: 300, flex: 1 },
     {
-      field: "id",
-      headerName: "Product Id",
-      minWidth: 200,
+      field: "status",
+      headerName: "Status",
+      minWidth: 150,
       flex: 0.5,
+      cellClassName: (params) => {
+        return params.row.status === "Delivered" ? "greenColor" : "redColor";
+      },
     },
     {
-      field: "name",
-      headerName: "Name",
-      minWidth: 350,
-      flex: 1,
-    },
-    {
-      field: "stock",
-      headerName: "Stock",
+      field: "itemsQty",
+      headerName: "Items Qty",
       type: "number",
       minWidth: 150,
       flex: 0.3,
     },
     {
-      field: "price",
-      headerName: "Price",
+      field: "amount",
+      headerName: "Amount",
       type: "number",
       minWidth: 270,
       flex: 0.5,
@@ -90,11 +86,11 @@ function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <NavLink to={`/admin/product/${params.row.id}`}>
+            <NavLink to={`/admin/order/${params.row.id}`}>
               <EditIcon />
             </NavLink>
 
-            <Button onClick={() => deleteProductHandler(params.row.id)}>
+            <Button onClick={() => deleteOrderHandler(params.row.id)}>
               <DeleteIcon />
             </Button>
           </>
@@ -105,24 +101,24 @@ function ProductList() {
 
   const rows = [];
 
-  products &&
-    products.forEach((item) => {
+  orders &&
+    orders.forEach((item) => {
       rows.push({
         id: item._id,
-        stock: item.stock,
-        price: item.price,
-        name: item.name,
+        itemsQty: item.orderItems.length,
+        amount: item.totalPrice,
+        status: item.orderStatus,
       });
     });
 
   return (
     <>
-      <MetaData title="All Products - Admin" />
+      <MetaData title="All Orders - Admin" />
 
       <div className="dashboard">
         <Sidebar />
         <div className="productListContainer">
-          <h1 className="productListHeading">All Products</h1>
+          <h1 className="productListHeading">All Orders</h1>
 
           <DataGrid
             rows={rows}
@@ -137,4 +133,4 @@ function ProductList() {
   );
 }
 
-export default ProductList;
+export default OrderList;
