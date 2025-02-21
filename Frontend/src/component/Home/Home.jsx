@@ -29,11 +29,11 @@ function Home() {
         <>
           <MetaData title="ECOMMERCE" />
           <div className="banner">
-            <p>Welcome to Ecommerce</p>
+            <p>Welcome to ShopEase</p>
             <h1>Find Amzing Products Below</h1>
 
             <a href="#container">
-              <button>
+              <button className="scroll">
                 Scroll <CgMouse />
               </button>
             </a>

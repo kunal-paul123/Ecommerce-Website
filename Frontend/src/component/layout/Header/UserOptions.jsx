@@ -60,7 +60,6 @@ function UserOptions() {
   }
   function logoutUser() {
     dispatch(logout());
-    // navigate("/login");
     alert.success("Logout Successfully");
   }
 

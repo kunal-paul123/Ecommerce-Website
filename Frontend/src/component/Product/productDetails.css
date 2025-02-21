@@ -160,7 +160,7 @@
 
 .reviewHeading {
   color: #000000be;
-  font: 500 1.4vmax "Roboto";
+  font: 500 1.5vmax "Roboto";
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.226);
   padding: 1vmax;
@@ -276,4 +276,7 @@
   .reviewCard > p {
     font: 600 1.8vmax "Roboto";
   }
+   .reviewHeading {
+    font: 500 2vmax "Roboto";
+   }
 }

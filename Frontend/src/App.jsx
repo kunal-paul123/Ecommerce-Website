@@ -31,6 +31,9 @@ import NewProduct from "./component/Admin/newProduct";
 import Updateproduct from "./component/Admin/UpdateProduct";
 import OrderList from "./component/Admin/OrderList";
 import UpdateOrder from "./component/Admin/UpdateOrder";
+import Contact from "./component/layout/Contact/Contact";
+import About from "./component/layout/About/About";
+import NotFound from "./component/layout/NotFound/NotFound";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -54,9 +57,15 @@ function App() {
 
         <Route path="/search" element={<Search />} />
 
+        <Route path="/contact" element={<Contact />} />
+
+        <Route path="/About" element={<About />} />
+
         <Route path="/login" element={<LoginSignup />} />
 
         <Route path="/cart" element={<Cart />} />
+
+        <Route path="*" element={<NotFound />} />
 
         <Route
           element={

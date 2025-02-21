@@ -77,7 +77,7 @@ function Products() {
               valueLabelDisplay="auto"
               getAriaLabel={() => "range-slider"}
               min={0}
-              max={25000}
+              max={60000}
             />
 
             <Typography>Categories</Typography>

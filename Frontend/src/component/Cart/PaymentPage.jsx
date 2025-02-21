@@ -5,13 +5,13 @@ import axios from "axios";
 import MetaData from "../layout/MetaData";
 import { clearErrors, createOrder } from "../../Actions/orderAction";
 import { useAlert } from "react-alert";
+import CheckoutSteps from "./CheckoutSteps";
+import "./PaymentPage.css";
 
 function PaymentPage() {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
-
-  console.log(shippingInfo);
 
   const alert = useAlert();
 
@@ -87,9 +87,13 @@ function PaymentPage() {
 
   return (
     <>
-      <MetaData title="Payment" />
-      <h2>Payment Page</h2>
-      <button onClick={handlePayment}>pay now</button>
+      <CheckoutSteps activeStep={2} />
+      <div className="paymentpage">
+        <MetaData title="Payment" />
+        <button className="payment" onClick={handlePayment}>
+          Pay now
+        </button>
+      </div>
     </>
   );
 }

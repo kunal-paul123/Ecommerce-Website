@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../images/logo.png";
+import logo4 from "../../images/logo4.png";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
@@ -17,7 +17,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <NavLink to="/">
-        <img src={logo} alt="Ecommerce" />
+        <img src={logo4} alt="Ecommerce" />
       </NavLink>
       <NavLink to="/admin/dashboard">
         <p>
@@ -44,18 +44,6 @@ function Sidebar() {
         <p>
           <ListAltIcon />
           Orders
-        </p>
-      </NavLink>
-      <NavLink to="/admin/users">
-        <p>
-          <PeopleIcon />
-          Users
-        </p>
-      </NavLink>
-      <NavLink to="/admin/reviews">
-        <p>
-          <RateReviewOutlinedIcon />
-          Reviews
         </p>
       </NavLink>
     </div>
