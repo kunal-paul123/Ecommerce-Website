@@ -13,7 +13,9 @@ app.use(
   })
 );
 
-dotenv.config({ path: "Backend/config/config.env" });
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({ path: "Backend/config/config.env" });
+}
 
 app.use(express.json());
 app.use(cookieParser());
