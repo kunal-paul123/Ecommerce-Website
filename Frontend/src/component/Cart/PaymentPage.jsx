@@ -26,7 +26,7 @@ function PaymentPage() {
 
     const {
       data: { key },
-    } = await axios.get("http://localhost:5000/api/v1/getkey");
+    } = await axios.get("https://trendtrove-ots3.onrender.com/api/v1/getkey");
 
     const {
       data: { order },
@@ -42,7 +42,7 @@ function PaymentPage() {
       description: "Order Payment",
       image: "https://example.com/your_logo",
       order_id: order.id,
-      callback_url: "http://localhost:5000/api/v1/paymentverification",
+      callback_url: "https://trendtrove-ots3.onrender.com/api/v1/paymentverification",
       prefill: {
         name: user.name,
         email: user.email,
