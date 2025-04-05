@@ -6,12 +6,13 @@ import "./orderSuccess.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { CLEAR_ERRORS } from "../../Constants/orderConstants";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 
 function OrderSuccess() {
   return (
     <>
       <div className="orderSuccess">
-        <CheckCircleIcon />
+        <ThumbUpAltIcon />
         <Typography>Your order has been placed successfully</Typography>
         <NavLink to="/orders">View Orders</NavLink>
       </div>

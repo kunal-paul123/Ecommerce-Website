@@ -33,7 +33,7 @@
 
 .profileContainer > div:first-child > a {
   border: none;
-  background-color: tomato;
+  background-color: #000;
   font: 400 1vmax "Roboto";
   color: white;
   text-decoration: none;
@@ -43,10 +43,7 @@
   margin-bottom: 3vmax;
   text-align: center;
   transition: all 0.5s;
-}
-
-.profileContainer > div:first-child > a:hover {
-  background-color: rgb(204, 78, 56);
+  border-radius: 55px;
 }
 
 .profileContainer > div:last-child {
@@ -75,14 +72,15 @@
 
 .profileContainer > div:last-child > div:last-child > a {
   border: none;
-  background-color: rgb(68, 68, 68);
-  font: 400 1vmax "Roboto";
+  background-color: #000;
+  font: 500 1vmax "Roboto";
   color: white;
   text-decoration: none;
   padding: 0.5vmax;
   text-align: center;
   transition: all 0.5s;
   margin: 1vmax 0;
+  border-radius: 55px;
 }
 
 .profileContainer > div:last-child > div:last-child > a:hover {

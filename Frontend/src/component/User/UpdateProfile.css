@@ -52,7 +52,7 @@
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
-  border-radius: 4px;
+  border-radius: 55px;
   font: 300 0.9vmax "Roboto";
   outline: none;
 }
@@ -66,7 +66,7 @@
 
 .UpdateProfileBtn {
   border: none;
-  background-color: tomato;
+  background-color: #000;
   color: white;
   font: 300 1vmax "Roboto";
   width: 100%;
@@ -76,10 +76,6 @@
   border-radius: 4px;
   outline: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
-}
-
-.UpdateProfileBtn:hover {
-  background-color: rgb(179, 66, 46);
 }
 
 @media screen and (max-width: 768px) {
@@ -106,16 +102,20 @@
   }
 
   .UpdateProfileForm > div > input {
-    padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax "Roboto";
+    padding: 2.5vmax 6vmax;
+    font: 300 1.9vmax "Roboto";
   }
-
+  .UpdateProfileForm > div > svg {
+    position: absolute;
+    transform: translateX(2vmax);
+    font-size: 2.5vmax;
+  }
   .UpdateProfileForm > div > svg {
     font-size: 3.2vmax;
   }
 
   .UpdateProfileBtn {
-    font: 300 1.9vmax "Roboto";
+    font: 300 2.2vmax "Roboto";
     padding: 1.8vmax;
   }
 }

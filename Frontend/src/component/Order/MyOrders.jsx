@@ -19,6 +19,7 @@ function MyOrders() {
 
   const columns = [
     { field: "id", headerName: "Order Id", minWidth: 300, flex: 1 },
+    { field: "name", headerName: "Name", minWidth: 300, flex: 1 },
     {
       field: "status",
       headerName: "Status",
@@ -65,6 +66,7 @@ function MyOrders() {
       rows.push({
         itemsQty: item.orderItems.length,
         id: item._id,
+        name: item.orderItems[0].name,
         status: item.orderStatus,
         amount: item.totalPrice,
       });

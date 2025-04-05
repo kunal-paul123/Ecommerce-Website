@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Rating from "@mui/material/Rating";
+import "./ProductCard.css";
 
 function ProductCard(product) {
   const options = {
@@ -21,7 +22,7 @@ function ProductCard(product) {
         <Rating {...options} />
         <span>({product.numOfReviews})</span>
       </div>
-      <span>{`₹${product.price}`}</span>
+      <span className="price">{`₹${product.price}`}</span>
     </NavLink>
   );
 }

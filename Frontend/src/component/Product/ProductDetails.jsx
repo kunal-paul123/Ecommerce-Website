@@ -30,10 +30,17 @@ function ProductDetails() {
     (state) => state.newReview
   );
 
+  const { isAuthenticated } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   const alert = useAlert();
 
   const addToCartHandler = () => {
+    if (!isAuthenticated) {
+      alert.error("Login to add items to cart");
+      return;
+    }
+
     dispatch(addItemsToCart(id, quantity));
     alert.success("Item Added To Cart");
   };

@@ -20,7 +20,7 @@
   width: 50%;
   outline: none;
   border-radius: 0%;
-  font: 300 1.1vmax cursive;
+  font: 300 1.1vmax "Roboto";
   box-sizing: border-box;
   height: 8%;
   margin: 10px 0px 10px 20px;
@@ -29,7 +29,7 @@
 .searchBox > input[type="submit"] {
   height: 8%;
   border-radius: 0%;
-  background-color: tomato;
+  background-color: #000;
   border: none;
   padding: 1vmax;
   width: 10%;
@@ -43,12 +43,12 @@
 @media screen and (max-width: 600px) {
   .searchBox > input[type="text"] {
     width: 100%;
-    font: 300 4vw cursive;
-    height: 10%;
+    font: 300 4vw "Roboto";
+    height: 8%;
   }
 
   .searchBox > input[type="submit"] {
-    height: 10%;
+    height: 8%;
     width: 30%;
     font: 300 4vw "Roboto";
   }

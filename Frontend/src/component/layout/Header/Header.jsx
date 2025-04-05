@@ -36,6 +36,7 @@ const options = {
   searchIconColorHover: "#eb4034",
   cartIconColorHover: "#eb4034",
   cartIconMargin: "1vmax",
+  burgerColor: "#000",
   SearchIconElement: FaSearch,
   CartIconElement: FaShoppingCart,
   ProfileIconElement: FaUserCircle,
