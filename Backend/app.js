@@ -4,6 +4,7 @@ const errorMiddleware = require("./middleware/error");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 
 app.use(
   cors({
@@ -21,6 +22,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
+const __dirname = path.resolve();
+
 //Route Imports
 const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
@@ -31,6 +34,16 @@ app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
+
+//Serving static files
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
+app.get(
+  "*",
+  (_,
+  (res) => {
+    res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"));
+  })
+);
 
 app.get("/api/v1/getkey", (req, res) => {
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
