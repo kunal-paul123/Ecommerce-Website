@@ -76,14 +76,14 @@ exports.forgotPassword = wrapAsync(async (req, res, next) => {
 
   try {
     await sendEmail({
-      email: user.email,
+      email: user?.email,
       subject: "Ecommerce Password Recovery",
       message,
     });
 
     res.status(200).json({
       success: true,
-      message: `Email sent to ${user.email} successfully`,
+      message: `Email sent to ${user?.email} successfully`,
     });
   } catch (error) {
     user.resetPasswordToken = undefined;

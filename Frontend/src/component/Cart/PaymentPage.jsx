@@ -44,7 +44,7 @@ function PaymentPage() {
         "https://trendtrove-5zd0.onrender.com/api/v1/paymentverification",
       prefill: {
         name: user?.name,
-        email: user.email,
+        email: user?.email,
         contact: shippingInfo.phoneNo,
       },
       notes: {

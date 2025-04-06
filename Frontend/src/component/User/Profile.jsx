@@ -35,11 +35,11 @@ function Profile() {
               </div>
               <div>
                 <h4>Email</h4>
-                <p>{user.email}</p>
+                <p>{user?.email}</p>
               </div>
               <div>
                 <h4>Joined On</h4>
-                <p>{String(user.createdAt).substr(0, 10)}</p>
+                <p>{String(user?.createdAt).substr(0, 10)}</p>
               </div>
               <div>
                 <NavLink to="/orders">My Order</NavLink>
