@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.css";
 import Button from "@mui/material/Button";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import kunalImg from "../../../images/kunal.jpg";

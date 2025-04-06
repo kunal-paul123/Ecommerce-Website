@@ -6,7 +6,7 @@ import { clearErrors, getOrderDeatils } from "../../Actions/orderAction";
 import { NavLink, useParams } from "react-router-dom";
 import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 function OrderDetails() {
   const { order, error, loading } = useSelector((state) => state.orderDetails);

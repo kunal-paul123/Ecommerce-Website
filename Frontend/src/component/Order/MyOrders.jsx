@@ -3,7 +3,7 @@ import "./myOrders.css";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import { DataGrid } from "@mui/x-data-grid";
-import { Typography } from "@material-ui/core";
+import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { clearErrors, myOrders } from "../../Actions/orderAction";

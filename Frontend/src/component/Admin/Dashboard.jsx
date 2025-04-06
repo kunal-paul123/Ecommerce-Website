@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "./dashboard.css";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import { Doughnut, Line } from "react-chartjs-2";
 import {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
 import { NavLink, useParams } from "react-router-dom";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import Sidebar from "./Sidebar";
 import {
   getOrderDeatils,

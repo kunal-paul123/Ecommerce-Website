@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import "./orderSuccess.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";

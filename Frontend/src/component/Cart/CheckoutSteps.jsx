@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";

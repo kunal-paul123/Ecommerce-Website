@@ -4,7 +4,7 @@ import CartItemCard from "./CartItemCard";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../Actions/cartAction";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import { NavLink, useNavigate } from "react-router-dom";
 import MetaData from "../layout/MetaData";
 

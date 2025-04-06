@@ -3,7 +3,7 @@ import "./confirmOrder.css";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import CheckoutSteps from "./CheckoutSteps";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import { NavLink, useNavigate } from "react-router-dom";
 
 function ConfirmOrder() {
