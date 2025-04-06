@@ -39,7 +39,7 @@ exports.paymentVerification = async (req, res) => {
 
   if (isAuthentic) {
     res.redirect(
-      `http://localhost:5173/paymentsuccess?reference=${razorpay_payment_id}`
+      `https://trendtrove-1-002i.onrender.com/paymentsuccess?reference=${razorpay_payment_id}`
     );
   } else {
     res.status(400).json({
