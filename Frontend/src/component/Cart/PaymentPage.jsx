@@ -43,7 +43,7 @@ function PaymentPage() {
       callback_url:
         "https://trendtrove-5zd0.onrender.com/api/v1/paymentverification",
       prefill: {
-        name: user.name,
+        name: user?.name,
         email: user.email,
         contact: shippingInfo.phoneNo,
       },

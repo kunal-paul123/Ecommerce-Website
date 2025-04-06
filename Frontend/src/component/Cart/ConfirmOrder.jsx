@@ -50,7 +50,7 @@ function ConfirmOrder() {
             <div className="confirmShippingAreaBox">
               <div>
                 <p>Name:</p>
-                <span>{user.name}</span>
+                <span>{user?.name}</span>
               </div>
               <div>
                 <p>Phone:</p>

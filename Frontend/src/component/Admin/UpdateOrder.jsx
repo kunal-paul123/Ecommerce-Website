@@ -75,7 +75,7 @@ function UpdateOrder() {
                   <div className="confirmShippingAreaBox">
                     <div>
                       <p>Name:</p>
-                      <span>{order.user && order.user.name}</span>
+                      <span>{order.user && order.user?.name}</span>
                     </div>
                     <div>
                       <p>Phone:</p>

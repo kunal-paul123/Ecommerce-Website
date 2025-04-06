@@ -168,7 +168,7 @@ exports.createProductReview = wrapAsync(async (req, res, next) => {
 
   const review = {
     user: req.user._id,
-    name: req.user.name,
+    name: req.user?.name,
     rating: Number(rating),
     comment,
   };

@@ -82,7 +82,7 @@ function MyOrders() {
 
   return (
     <>
-      <MetaData title={`${user.name} - orders`} />
+      <MetaData title={`${user?.name} - orders`} />
 
       {loading ? (
         <Loader />
@@ -97,7 +97,7 @@ function MyOrders() {
           />
 
           <Typography className="myOrdersHeading">
-            {user.name}'s Orders
+            {user?.name}'s Orders
           </Typography>
         </div>
       )}

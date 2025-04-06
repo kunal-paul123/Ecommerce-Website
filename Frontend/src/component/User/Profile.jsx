@@ -22,16 +22,16 @@ function Profile() {
         <Loader />
       ) : (
         <>
-          <MetaData title={`${user.name}'s Profile`} />
+          <MetaData title={`${user?.name}'s Profile`} />
           <div className="profileContainer">
             <div>
-              <img src={profile} alt={user.name} />
+              <img src={profile} alt={user?.name} />
               <NavLink to="/me/update">Edit Profile</NavLink>
             </div>
             <div>
               <div>
                 <h4>Full Name</h4>
-                <p>{user.name}</p>
+                <p>{user?.name}</p>
               </div>
               <div>
                 <h4>Email</h4>
