@@ -1,7 +1,7 @@
 import "./Footer.css";
 import visa from "../../../images/visa.png";
 import razorpay from "../../../images/razorpay.png";
-import mastercard from "../../../images/mastercard.png";
+import mastercard from "../../../images/masterCard.png";
 import american from "../../../images/american.png";
 
 const Footer = () => {
