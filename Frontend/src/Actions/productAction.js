@@ -25,6 +25,8 @@ import {
 } from "../Constants/productConstants";
 import { LOGIN_FAIL } from "../Constants/userConstant";
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 //get all products
 export const getProducts =
   (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>
@@ -34,10 +36,10 @@ export const getProducts =
         type: ALL_PRODUCT_REQUESTS,
       });
 
-      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      let link = `${backendURL}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
 
       if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link = `${backendURL}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
 
       const { data } = await axios.get(link);
@@ -59,7 +61,7 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUESTS });
 
-    const { data } = await axios.get("/api/v1/admin/products");
+    const { data } = await axios.get(`${backendURL}/api/v1/admin/products`);
 
     dispatch({ type: ADMIN_PRODUCT_SUCCESS, payload: data.products });
   } catch (error) {
@@ -79,7 +81,7 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/v1/admin/product/new",
+      `${backendURL}/api/v1/admin/product/new`,
       productData,
       config
     );
@@ -110,7 +112,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/admin/product/${id}`,
+      `${backendURL}/api/v1/admin/product/${id}`,
       productData,
       config
     );
@@ -134,7 +136,9 @@ export const deleteProduct = (id) => async (dispatch) => {
       type: DELETE_PRODUCT_REQUEST,
     });
 
-    const { data } = await axios.delete(`/api/v1/admin/product/${id}`);
+    const { data } = await axios.delete(
+      `${backendURL}/api/v1/admin/product/${id}`
+    );
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -155,7 +159,7 @@ export const getProductDetails = (id) => async (dispatch) => {
       type: PRODUCT_DETAILS_REQUESTS,
     });
 
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await axios.get(`${backendURL}/api/v1/product/${id}`);
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -180,7 +184,11 @@ export const newReview = (reviewData) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.put("/api/v1/review", reviewData, config);
+    const { data } = await axios.put(
+      `${backendURL}/api/v1/review`,
+      reviewData,
+      config
+    );
 
     dispatch({
       type: NEW_REVIEW_SUCCESS,

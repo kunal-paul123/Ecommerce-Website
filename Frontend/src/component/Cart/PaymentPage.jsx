@@ -9,6 +9,8 @@ import CheckoutSteps from "./CheckoutSteps";
 import "./PaymentPage.css";
 
 function PaymentPage() {
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
+
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
@@ -28,7 +30,7 @@ function PaymentPage() {
 
     const {
       data: { order },
-    } = await axios.post("/api/v1/payment/order", {
+    } = await axios.post(`${backendURL}/api/v1/payment/order`, {
       amount: orderInfo.totalPrice,
     });
 

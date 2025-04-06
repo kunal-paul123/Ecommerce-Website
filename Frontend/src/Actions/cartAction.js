@@ -5,9 +5,11 @@ import {
   SAVE_SHIPPING_INFO,
 } from "../Constants/cartConstants";
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 //Add to cart
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/v1/product/${id}`);
+  const { data } = await axios.get(`${backendURL}/api/v1/product/${id}`);
 
   dispatch({
     type: ADD_TO_CART,
