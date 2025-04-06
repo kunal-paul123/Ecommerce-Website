@@ -33,13 +33,15 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUESTS });
 
-    const config = { headers: { "Content-Type": "application/json" } };
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
 
     const { data } = await axios.post(
       `${backendURL}/api/v1/login`,
       { email, password },
-      config,
-      { withCredentials: true }
+      config
     );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
@@ -56,7 +58,10 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUESTS });
 
-    const config = { headers: { "Content-Type": "application/json" } };
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
 
     const { data } = await axios.post(
       `${backendURL}/api/v1/register`,
