@@ -9,7 +9,7 @@ import "./productDetails.css";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import MetaData from "../layout/MetaData";
 import { addItemsToCart } from "../../Actions/cartAction";
 import Button from "@mui/material/Button";
@@ -33,16 +33,15 @@ function ProductDetails() {
   const { isAuthenticated } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   const addToCartHandler = () => {
     if (!isAuthenticated) {
-      alert.error("Login to add items to cart");
+      toast.error("Login to add items to cart");
       return;
     }
 
     dispatch(addItemsToCart(id, quantity));
-    alert.success("Item Added To Cart");
+    toast.success("Item Added To Cart");
   };
 
   const options = {
@@ -88,22 +87,22 @@ function ProductDetails() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (reviewError) {
-      alert.error(reviewError);
+      toast.error(reviewError);
       dispatch(clearErrors());
     }
 
     if (success) {
-      alert.success("Review Submitted Successfully");
+      toast.success("Review Submitted Successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
 
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error, alert, reviewError, success]);
+  }, [dispatch, id, error, toast, reviewError, success]);
 
   return (
     <>

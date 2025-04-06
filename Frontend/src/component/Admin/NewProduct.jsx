@@ -8,7 +8,7 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import StorageIcon from "@mui/icons-material/Storage";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { clearErrors, createProduct } from "../../Actions/productAction";
 import { useNavigate } from "react-router-dom";
 import { NEW_PRODUCT_RESET } from "../../Constants/productConstants";
@@ -20,8 +20,6 @@ function NewProduct() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
-  const alert = useAlert();
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState();
@@ -44,16 +42,16 @@ function NewProduct() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (success) {
-      alert.success("Product Created Successfully");
+      toast.success("Product Created Successfully");
       navigate("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [error, success, navigate, alert, dispatch]);
+  }, [error, success, navigate, toast, dispatch]);
 
   const createFormSubmitHandler = (e) => {
     e.preventDefault();

@@ -8,7 +8,7 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import StorageIcon from "@mui/icons-material/Storage";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import {
   clearErrors,
@@ -30,8 +30,6 @@ function Updateproduct() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-  const alert = useAlert();
 
   const { id } = useParams();
 
@@ -68,21 +66,21 @@ function Updateproduct() {
     }
 
     if (isUpdated) {
-      alert.success("Product Updated Successfully");
+      toast.success("Product Updated Successfully");
       navigate("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
-  }, [error, isUpdated, navigate, alert, dispatch, id, product, updateError]);
+  }, [error, isUpdated, navigate, toast, dispatch, id, product, updateError]);
 
   const updateProductHandler = (e) => {
     e.preventDefault();

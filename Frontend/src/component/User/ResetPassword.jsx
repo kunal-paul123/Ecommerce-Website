@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { clearErrors, resetPassword } from "../../Actions/userAction";
 import "./ResetPassword.css";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
@@ -17,7 +17,7 @@ function ResetPassword() {
   const { token } = useParams();
 
   const dispatch = useDispatch();
-  const alert = useAlert();
+
   const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
@@ -25,15 +25,15 @@ function ResetPassword() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (success) {
-      alert.success("Password Updated Successfully");
+      toast.success("Password Updated Successfully");
 
       navigate("/login");
     }
-  }, [dispatch, error, alert, success]);
+  }, [dispatch, error, toast, success]);
 
   const resetPasswordSubmit = (e) => {
     e.preventDefault();

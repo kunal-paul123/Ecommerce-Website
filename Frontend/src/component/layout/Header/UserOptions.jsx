@@ -11,7 +11,7 @@ import Profile from "../../../images/Profile.png";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { logout } from "../../../Actions/userAction";
 
 function UserOptions() {
@@ -20,7 +20,7 @@ function UserOptions() {
   const { user } = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const alert = useAlert();
+
   const dispatch = useDispatch();
 
   const actions = [
@@ -60,7 +60,7 @@ function UserOptions() {
   }
   function logoutUser() {
     dispatch(logout());
-    alert.success("Logout Successfully");
+    toast.success("Logout Successfully");
   }
 
   return (

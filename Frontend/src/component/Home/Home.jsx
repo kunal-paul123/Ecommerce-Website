@@ -6,11 +6,10 @@ import { clearErrors, getProducts } from "../../Actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import model2 from "../../images/model2.jpg";
 
 function Home() {
-  const alert = useAlert();
   const { loading, error, products } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
@@ -23,11 +22,11 @@ function Home() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     dispatch(getProducts());
-  }, [dispatch, error, alert]);
+  }, [dispatch, error, toast]);
 
   return (
     <>

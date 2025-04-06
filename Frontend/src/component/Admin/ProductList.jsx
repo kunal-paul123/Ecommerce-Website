@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import Button from "@mui/material/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
@@ -27,31 +27,29 @@ function ProductList() {
 
   const navigate = useNavigate();
 
-  const alert = useAlert();
-
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
   };
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (deleteError) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (isDeleted) {
-      alert.success("Product Delete Successfully");
+      toast.success("Product Delete Successfully");
       navigate("/admin/dashboard");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
     dispatch(getAdminProducts());
-  }, [dispatch, alert, error, deleteError, isDeleted]);
+  }, [dispatch, toast, error, deleteError, isDeleted]);
 
   const columns = [
     {

@@ -9,7 +9,7 @@ import {
   updateOrder,
 } from "../../Actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { Button } from "@mui/material";
 import { UPDATE_ORDER_RESET } from "../../Constants/orderConstants";
@@ -21,7 +21,6 @@ function UpdateOrder() {
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   const { id } = useParams();
 
@@ -39,21 +38,21 @@ function UpdateOrder() {
 
   useEffect(() => {
     if (isUpdated) {
-      alert.success("Order Updated Successfully");
+      toast.success("Order Updated Successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (updateError) {
-      alert.error(updateError);
+      toast.error(updateError);
       dispatch(clearErrors());
     }
 
     dispatch(getOrderDeatils(id));
-  }, [dispatch, alert, error, id, isUpdated, updateError]);
+  }, [dispatch, toast, error, id, isUpdated, updateError]);
 
   return (
     <>

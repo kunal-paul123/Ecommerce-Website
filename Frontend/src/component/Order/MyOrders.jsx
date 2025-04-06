@@ -5,7 +5,7 @@ import Loader from "../layout/Loader/Loader";
 import { DataGrid } from "@mui/x-data-grid";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { clearErrors, myOrders } from "../../Actions/orderAction";
 import { NavLink } from "react-router-dom";
 import LaunchIcon from "@mui/icons-material/Launch";
@@ -15,7 +15,6 @@ function MyOrders() {
   const { user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   const columns = [
     { field: "id", headerName: "Order Id", minWidth: 300, flex: 1 },
@@ -74,12 +73,12 @@ function MyOrders() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     dispatch(myOrders());
-  }, [dispatch, alert, error]);
+  }, [dispatch, toast, error]);
 
   return (
     <>

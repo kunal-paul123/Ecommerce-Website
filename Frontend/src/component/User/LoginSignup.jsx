@@ -7,7 +7,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import Profile from "../../images/Profile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../Actions/userAction";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import Loader from "../layout/Loader/Loader";
 
 function LoginSignup() {
@@ -16,7 +16,6 @@ function LoginSignup() {
   );
 
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   const location = useLocation();
 
@@ -63,14 +62,15 @@ function LoginSignup() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
+      toast.success("Login successfully");
       const redirectPath = redirect.startsWith("/") ? redirect : `/${redirect}`;
       navigate(redirectPath);
     }
-  }, [dispatch, error, alert, isAuthenticated, redirect, navigate]);
+  }, [dispatch, error, toast, isAuthenticated, redirect, navigate]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

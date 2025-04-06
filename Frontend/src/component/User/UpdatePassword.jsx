@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./UpdatePassword.css";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { clearErrors, updatePassword } from "../../Actions/userAction";
@@ -15,7 +15,7 @@ function UpdatePassword() {
   const { isUpdated, error, loading } = useSelector((state) => state.profile);
 
   const dispatch = useDispatch();
-  const alert = useAlert();
+
   const navigate = useNavigate();
 
   const [oldPassword, setOldPassword] = useState("");
@@ -24,17 +24,17 @@ function UpdatePassword() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (isUpdated) {
-      alert.success("Password Updated Successfully");
+      toast.success("Password Updated Successfully");
 
       navigate("/account");
 
       dispatch({ type: UPDATE_PASSWORD_RESET });
     }
-  }, [dispatch, error, alert, isUpdated]);
+  }, [dispatch, error, toast, isUpdated]);
 
   const updatePasswordSubmit = (e) => {
     e.preventDefault();

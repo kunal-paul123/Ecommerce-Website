@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import Button from "@mui/material/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
@@ -25,31 +25,29 @@ function OrderList() {
 
   const navigate = useNavigate();
 
-  const alert = useAlert();
-
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
   };
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (deleteError) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (isDeleted) {
-      alert.success("Order Deleted Successfully");
+      toast.success("Order Deleted Successfully");
       navigate("/admin/orders");
       dispatch({ type: DELETE_ORDER_RESET });
     }
 
     dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, isDeleted]);
+  }, [dispatch, toast, error, deleteError, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Order Id", minWidth: 300, flex: 1 },

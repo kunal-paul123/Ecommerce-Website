@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MetaData from "../layout/MetaData";
 import { clearErrors, createOrder } from "../../Actions/orderAction";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import CheckoutSteps from "./CheckoutSteps";
 import "./PaymentPage.css";
 
@@ -12,8 +12,6 @@ function PaymentPage() {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
-
-  const alert = useAlert();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,7 +40,8 @@ function PaymentPage() {
       description: "Order Payment",
       image: "https://example.com/your_logo",
       order_id: order.id,
-      callback_url: "https://trendtrove-5zd0.onrender.com/api/v1/paymentverification",
+      callback_url:
+        "https://trendtrove-5zd0.onrender.com/api/v1/paymentverification",
       prefill: {
         name: user.name,
         email: user.email,
@@ -80,10 +79,10 @@ function PaymentPage() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, error, alert]);
+  }, [dispatch, error, toast]);
 
   return (
     <>

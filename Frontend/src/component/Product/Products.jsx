@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import MetaData from "../layout/MetaData";
 
 let categories = [
@@ -29,8 +29,6 @@ function Products() {
 
   // console.log(products);
 
-  const alert = useAlert();
-
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
@@ -48,11 +46,11 @@ function Products() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     dispatch(getProducts(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, price, category, ratings, error, alert]);
+  }, [dispatch, keyword, currentPage, price, category, ratings, error, toast]);
 
   return (
     <>

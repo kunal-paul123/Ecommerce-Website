@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./orderDetails.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { clearErrors, getOrderDeatils } from "../../Actions/orderAction";
 import { NavLink, useParams } from "react-router-dom";
 import Loader from "../layout/Loader/Loader";
@@ -14,16 +14,15 @@ function OrderDetails() {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     dispatch(getOrderDeatils(id));
-  }, [dispatch, alert, error, id]);
+  }, [dispatch, toast, error, id]);
 
   return (
     <>

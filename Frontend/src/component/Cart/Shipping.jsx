@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import MetaData from "../layout/MetaData";
 import HomeIcon from "@mui/icons-material/Home";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
@@ -19,7 +19,6 @@ function Shipping() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const alert = useAlert();
 
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
@@ -32,7 +31,7 @@ function Shipping() {
     e.preventDefault();
 
     if (phoneNo.length < 10 || phoneNo.length > 10) {
-      alert.error("Phone Number should be 10 digits Long");
+      toast.error("Phone Number should be 10 digits Long");
       return;
     }
     dispatch(

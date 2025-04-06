@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loadUser, updateProfile } from "../../Actions/userAction";
@@ -15,7 +15,7 @@ function UpdateProfile() {
   const { isUpdated, error, loading } = useSelector((state) => state.profile);
 
   const dispatch = useDispatch();
-  const alert = useAlert();
+
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -28,18 +28,18 @@ function UpdateProfile() {
     }
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (isUpdated) {
-      alert.success("Profile Updated Successfully");
+      toast.success("Profile Updated Successfully");
       dispatch(loadUser());
 
       navigate("/account");
 
       dispatch({ type: UPDATE_PROFILE_RESET });
     }
-  }, [dispatch, error, alert, user, isUpdated]);
+  }, [dispatch, error, toast, user, isUpdated]);
 
   const updateProfileSubmit = (e) => {
     e.preventDefault();

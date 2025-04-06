@@ -2,7 +2,7 @@ import "./ForgotPassword.css";
 import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { clearErrors, forgotPassword } from "../../Actions/userAction";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -13,7 +13,6 @@ function ForgotPassword() {
   );
 
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   const [email, setEmail] = useState("");
 
@@ -28,13 +27,13 @@ function ForgotPassword() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (message) {
-      alert.success(message);
+      toast.success(message);
     }
-  }, [dispatch, error, alert, message]);
+  }, [dispatch, error, toast, message]);
 
   return (
     <>
