@@ -9,6 +9,8 @@ const sendToken = (user, statusCode, res) => {
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
   };
 
   // Send the token in a cookie along with the user details in the response
