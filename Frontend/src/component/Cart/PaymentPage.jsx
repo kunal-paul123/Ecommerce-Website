@@ -30,9 +30,15 @@ function PaymentPage() {
 
     const {
       data: { order },
-    } = await axios.post(`${backendURL}/api/v1/payment/order`, {
-      amount: orderInfo.totalPrice,
-    });
+    } = await axios.post(
+      `${backendURL}/api/v1/payment/order`,
+      {
+        amount: orderInfo.totalPrice,
+      },
+      {
+        withCredentials: true, //Send cookies (JWT) with request
+      }
+    );
 
     const options = {
       key,
