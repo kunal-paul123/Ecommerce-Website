@@ -49,7 +49,7 @@ function Cart() {
 
   return (
     <>
-      {cartItems.length == 0 ? (
+      {cartItems?.length == 0 ? (
         <div className="emptyCart">
           <RemoveShoppingCartIcon />
 

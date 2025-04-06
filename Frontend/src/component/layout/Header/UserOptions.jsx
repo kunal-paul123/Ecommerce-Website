@@ -29,10 +29,10 @@ function UserOptions() {
     {
       icon: (
         <ShoppingCartIcon
-          style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
+          style={{ color: cartItems?.length > 0 ? "tomato" : "unset" }}
         />
       ),
-      name: `Cart(${cartItems.length})`,
+      name: `Cart(${cartItems?.length})`,
       func: cart,
     },
     { icon: <ExitToAppSharpIcon />, name: "Logout", func: logoutUser },

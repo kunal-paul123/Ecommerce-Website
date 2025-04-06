@@ -103,7 +103,7 @@ function OrderList() {
     orders.forEach((item) => {
       rows.push({
         id: item._id,
-        itemsQty: item.orderItems.length,
+        itemsQty: item.orderItems?.length,
         amount: item.totalPrice,
         status: item.orderStatus,
       });

@@ -70,7 +70,7 @@ function Dashboard() {
       {
         backgroundColor: ["#00A684", "#680084"],
         hoverBackgroundColor: ["#485000", "#35014F"],
-        data: [outOfStock, products.length - outOfStock],
+        data: [outOfStock, products?.length - outOfStock],
       },
     ],
   };
@@ -91,11 +91,11 @@ function Dashboard() {
           <div className="dashboardSummaryBox2">
             <NavLink to="/admin/products">
               <p>Product</p>
-              <p>{products && products.length}</p>
+              <p>{products && products?.length}</p>
             </NavLink>
             <NavLink to="/admin/orders">
               <p>Orders</p>
-              <p>{orders && orders.length}</p>
+              <p>{orders && orders?.length}</p>
             </NavLink>
             <NavLink to="/admin/users">
               <p>Users</p>

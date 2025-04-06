@@ -63,7 +63,7 @@ function MyOrders() {
   orders &&
     orders.forEach((item) => {
       rows.push({
-        itemsQty: item.orderItems.length,
+        itemsQty: item.orderItems?.length,
         id: item._id,
         name: item.orderItems[0].name,
         status: item.orderStatus,
