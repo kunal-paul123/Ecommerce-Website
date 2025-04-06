@@ -8,7 +8,6 @@ const dotenv = require("dotenv");
 app.use(
   cors({
     origin: "https://trendtrove-1-002i.onrender.com",
-    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
