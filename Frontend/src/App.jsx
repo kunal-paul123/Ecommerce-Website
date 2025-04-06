@@ -27,7 +27,7 @@ import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from "./component/Admin/Dashboard";
 import ProductList from "./component/Admin/ProductList";
-import NewProduct from "./component/Admin/newProduct";
+import NewProduct from "./component/Admin/NewProduct";
 import Updateproduct from "./component/Admin/UpdateProduct";
 import OrderList from "./component/Admin/OrderList";
 import UpdateOrder from "./component/Admin/UpdateOrder";
