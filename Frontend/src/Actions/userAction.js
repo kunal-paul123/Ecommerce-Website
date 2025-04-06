@@ -38,7 +38,8 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       `${backendURL}/api/v1/login`,
       { email, password },
-      config
+      config,
+      { withCredentials: true }
     );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
@@ -60,7 +61,8 @@ export const register = (userData) => async (dispatch) => {
     const { data } = await axios.post(
       `${backendURL}/api/v1/register`,
       userData,
-      config
+      config,
+      { withCredentials: true }
     );
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
@@ -77,7 +79,9 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUESTS });
 
-    const { data } = await axios.get(`${backendURL}/api/v1/me`);
+    const { data } = await axios.get(`${backendURL}/api/v1/me`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -88,7 +92,9 @@ export const loadUser = () => async (dispatch) => {
 //logout user
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`${backendURL}/api/v1/logout`);
+    await axios.get(`${backendURL}/api/v1/logout`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -106,7 +112,8 @@ export const updateProfile = (userData) => async (dispatch) => {
     const { data } = await axios.put(
       `${backendURL}/api/v1/me/update`,
       userData,
-      config
+      config,
+      { withCredentials: true }
     );
 
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
@@ -128,7 +135,8 @@ export const updatePassword = (passwords) => async (dispatch) => {
     const { data } = await axios.put(
       `${backendURL}/api/v1/password/update`,
       passwords,
-      config
+      config,
+      { withCredentials: true }
     );
 
     dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
@@ -150,7 +158,8 @@ export const forgotPassword = (email) => async (dispatch) => {
     const { data } = await axios.post(
       `${backendURL}/api/v1/password/forgot`,
       email,
-      config
+      config,
+      { withCredentials: true }
     );
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
@@ -172,7 +181,8 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     const { data } = await axios.put(
       `${backendURL}/api/v1/password/reset/${token}`,
       passwords,
-      config
+      config,
+      { withCredentials: true }
     );
 
     dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data.success });
