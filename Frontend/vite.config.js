@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://trendtrove-ots3.onrender.com",
+        target: "https://trendtrove-5zd0.onrender.com",
         changeOrigin: true,
         secure: false,
       },
