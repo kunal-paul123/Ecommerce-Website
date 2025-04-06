@@ -38,7 +38,7 @@ function UserOptions() {
     { icon: <ExitToAppSharpIcon />, name: "Logout", func: logoutUser },
   ];
 
-  if (user.role === "admin") {
+  if (user && user.role === "admin") {
     actions.unshift({
       icon: <DashboardIcon />,
       name: "Dashboard",
