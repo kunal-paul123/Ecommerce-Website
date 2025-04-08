@@ -11,9 +11,9 @@ module.exports = (err, req, res, next) => {
   }
 
   //mongoose duplicate key error
-  if (err.code == 11000) {
+  if (err.code === 11000) {
     const message = `Duplicate ${Object.keys(
-      err.errorResponse.keyValue
+      err.keyValue
     )} entered`;
     err = new ExpressError(400, message);
   }

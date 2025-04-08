@@ -102,6 +102,10 @@
     width: 17vw;
   }
 
+  .products {
+    padding: 0 0;
+  }
+
   .productCard > p {
     font-size: 1.9vmax;
   }

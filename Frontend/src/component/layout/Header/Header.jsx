@@ -11,7 +11,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import LogoutIcon from "@mui/icons-material/Logout";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import { useNavigate } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import {
   Drawer,
@@ -43,6 +44,7 @@ function Header() {
 
   const menuItems = [
     { text: "Home", icon: <HomeIcon />, func: home },
+    { text: "Search", icon: <SearchIcon />, func: search },
     {
       text: "Products",
       icon: <InventoryIcon />,
@@ -76,6 +78,9 @@ function Header() {
 
   function home() {
     navigate("/");
+  }
+  function search() {
+    navigate("/search");
   }
   function products() {
     navigate("/products");
