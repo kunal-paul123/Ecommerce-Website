@@ -126,7 +126,7 @@ function ProductList() {
             rows={rows}
             columns={columns}
             pageSize={10}
-            disableSelectionOnclick
+            disableSelectionOnClick
             className="productListTable"
           />
         </div>

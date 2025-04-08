@@ -227,7 +227,14 @@
   text-transform: capitalize;
 }
 
-/* Responsive Design */
+.no-orders {
+  text-align: center;
+  color: #777;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+
 @media screen and (max-width: 768px) {
   .myOrdersHeading {
     margin-top: -15px;

@@ -117,8 +117,28 @@ function Header() {
       role="presentation"
       onClick={toggleDrawer(false)}
     >
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <img src={logo} alt="Logo" style={{ width: "130px" }} />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mt: 4,
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "1.8rem",
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 700,
+            color: "#0d47a1",
+            letterSpacing: "1px",
+            background: "linear-gradient(45deg, #2196f3, #f44336)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Trend<span style={{ color: "#f44336" }}>Trove</span>
+        </Typography>
       </Box>
       <List>
         {menuItems.map((item) => (

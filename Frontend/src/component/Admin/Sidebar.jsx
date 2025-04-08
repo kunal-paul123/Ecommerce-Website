@@ -12,13 +12,35 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import PeopleIcon from "@mui/icons-material/People";
 import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
 import "./sidebar.css";
+import { Box, Typography } from "@mui/material";
 
 function Sidebar() {
   return (
     <div className="sidebar">
-      <NavLink to="/">
-        <img src={logo4} alt="Ecommerce" />
-      </NavLink>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mt: 4,
+        }}
+      >
+        <Typography
+          sx={{
+            padding: "20px 0px",
+            fontFamily: "'Poppins', sans-serif",
+            color: "#0d47a1",
+            letterSpacing: "1px",
+            background: "linear-gradient(45deg, #2196f3, #f44336)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          <NavLink style={{ fontSize: "2rem", fontWeight: 600 }} to="/">
+            Trend<span style={{ color: "#f44336" }}>Trove</span>
+          </NavLink>
+        </Typography>
+      </Box>
       <NavLink to="/admin/dashboard">
         <p>
           <DashboardIcon /> Dashboard

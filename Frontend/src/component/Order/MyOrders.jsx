@@ -69,7 +69,7 @@ function MyOrders() {
                 </div>
               ))
             ) : (
-              <p>No orders found.</p>
+              <p className="no-orders">No orders found.</p>
             )}
           </div>
         </div>
