@@ -61,14 +61,14 @@ function LoginSignup() {
   const redirect = searchParams.get("redirect") || "/account";
 
   useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch(clearErrors());
-    }
     if (isAuthenticated) {
       toast.success("Login successfully");
       const redirectPath = redirect.startsWith("/") ? redirect : `/${redirect}`;
       navigate(redirectPath);
+    }
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
     }
   }, [dispatch, error, toast, isAuthenticated, redirect, navigate]);
 

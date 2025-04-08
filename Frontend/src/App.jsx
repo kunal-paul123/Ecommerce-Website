@@ -10,7 +10,7 @@ import LoginSignup from "./component/User/LoginSignup";
 import { useEffect } from "react";
 import { store } from "./store";
 import { loadUser } from "./Actions/userAction";
-import UserOptions from "./component/layout/Header/UserOptions";
+// import UserOptions from "./component/layout/Header/UserOptions";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
@@ -45,7 +45,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      {isAuthenticated && <UserOptions user={user} />}
+      {/* {isAuthenticated && <UserOptions user={user} />} */}
       <Routes>
         <Route path="/" element={<Home />} />
 

@@ -34,7 +34,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: LOGIN_REQUESTS });
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: {},
       withCredentials: true,
     };
 
@@ -59,7 +59,7 @@ export const register = (userData) => async (dispatch) => {
     dispatch({ type: REGISTER_USER_REQUESTS });
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: {},
       withCredentials: true,
     };
 
