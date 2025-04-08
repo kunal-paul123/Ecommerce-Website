@@ -34,7 +34,7 @@ function Home() {
         <Loader />
       ) : (
         <>
-          <MetaData title="ECOMMERCE" />
+          <MetaData title="TrendTrove" />
           <div className="fashion-sale">
             <div className="fashion-content">
               <h3 className="sale-text">Summer Collection</h3>
