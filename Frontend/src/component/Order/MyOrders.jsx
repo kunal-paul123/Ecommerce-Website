@@ -16,61 +16,6 @@ function MyOrders() {
 
   const dispatch = useDispatch();
 
-  const columns = [
-    { field: "id", headerName: "Order Id", minWidth: 300, flex: 1 },
-    { field: "name", headerName: "Name", minWidth: 300, flex: 1 },
-    {
-      field: "status",
-      headerName: "Status",
-      minWidth: 150,
-      flex: 0.5,
-      cellClassName: (params) => {
-        return params.row.status === "Delivered" ? "greenColor" : "redColor";
-      },
-    },
-    {
-      field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 150,
-      flex: 0.3,
-    },
-    {
-      field: "amount",
-      headerName: "Amount",
-      type: "number",
-      minWidth: 270,
-      flex: 0.5,
-    },
-    {
-      field: "actions",
-      flex: 0.3,
-      headerName: "Actions",
-      type: "number",
-      minWidth: 150,
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <NavLink to={`/order/${params.row.id}`}>
-            <LaunchIcon />
-          </NavLink>
-        );
-      },
-    },
-  ];
-  const rows = [];
-
-  orders &&
-    orders.forEach((item) => {
-      rows.push({
-        itemsQty: item.orderItems?.length,
-        id: item._id,
-        name: item.orderItems[0].name,
-        status: item.orderStatus,
-        amount: item.totalPrice,
-      });
-    });
-
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -82,23 +27,51 @@ function MyOrders() {
 
   return (
     <>
-      <MetaData title={`${user?.name} - orders`} />
+      <MetaData title={`${user?.name} - Orders`} />
 
       {loading ? (
         <Loader />
       ) : (
         <div className="myOrdersPage">
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnclick
-            className="myOrdersTable"
-          />
+          <p className="myOrdersHeading">Your Orders</p>
 
-          <Typography className="myOrdersHeading">
-            {user?.name}'s Orders
-          </Typography>
+          <div className="ordersContainer">
+            {orders && orders.length > 0 ? (
+              orders.map((order) => (
+                <div key={order._id} className="orderCard">
+                  <p>
+                    <strong>Order ID:</strong> {order._id}
+                  </p>
+                  <p>
+                    <strong>Name:</strong> {order.orderItems[0]?.name}
+                  </p>
+                  <p>
+                    <strong>Status:</strong>{" "}
+                    <span
+                      className={
+                        order.orderStatus === "Delivered"
+                          ? "greenColor"
+                          : "redColor"
+                      }
+                    >
+                      {order.orderStatus}
+                    </span>
+                  </p>
+                  <p>
+                    <strong>Items Qty:</strong> {order.orderItems?.length}
+                  </p>
+                  <p>
+                    <strong>Amount:</strong> ₹{order.totalPrice}
+                  </p>
+                  <NavLink to={`/order/${order._id}`} className="orderLink">
+                    <LaunchIcon /> View Details
+                  </NavLink>
+                </div>
+              ))
+            ) : (
+              <p>No orders found.</p>
+            )}
+          </div>
         </div>
       )}
     </>
