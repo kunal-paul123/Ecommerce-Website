@@ -34,6 +34,7 @@ import UpdateOrder from "./component/Admin/UpdateOrder";
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/NotFound/NotFound";
+import ScrollToTop from "./component/ScrollToTop/ScrollToTop";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       {/* {isAuthenticated && <UserOptions user={user} />} */}
       <Routes>
