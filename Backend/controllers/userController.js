@@ -45,9 +45,11 @@ exports.login = wrapAsync(async (req, res, next) => {
 //Logout user
 exports.logout = wrapAsync(async (req, res, next) => {
   // Clear the cookie by setting it to null and expiring it immediately
-  res.cookie("token", null, {
-    expires: new Date(Date.now()),
+  res.cookie("token", "", {
     httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    expires: new Date(0),
   });
 
   res.status(200).json({
